@@ -20,3 +20,10 @@ void CPUInicialize() {
   memset(Registers, 0, sizeof(Registers)); //Define os Registradores para 0
 }
 
+void LoadGame(char *game) {
+  FILE *fgame;
+  fgame = open(game, "rb");
+  fread(&GameMemory[0x200], 0xFFF, 1, fgame);
+  fclose(fgame);
+}
+
