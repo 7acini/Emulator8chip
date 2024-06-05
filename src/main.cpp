@@ -14,3 +14,9 @@ WORD Counter;           // Contador do Programa
 WORD FirstAddress;      // Primeiro endereço de 16 bits
 vector Stack;           // Pilha de 16 bits
 
+void CPUInicialize() {
+  FirstAddress = 0;
+  Counter = 0x200;
+  memset(Registers, 0, sizeof(Registers)); //Define os Registradores para 0
+}
+
