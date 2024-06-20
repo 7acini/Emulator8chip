@@ -27,3 +27,11 @@ void LoadGame(char *game) {
   fclose(fgame);
 }
 
+WORD GetNextOperationalCode(){
+  WORD op = 0;
+  op = GameMemory[Counter]; // no exemplo op é 0xAB
+  op <<= 8; // desloca 8 bits para esquerda, op é 0xAB00
+  op |= GameMemory[Counter + 1]; // op é 0xABCD
+  Counter += 2;
+  return op;
+}
