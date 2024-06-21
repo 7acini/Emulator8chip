@@ -35,3 +35,25 @@ WORD GetNextOperationalCode(){
   Counter += 2;
   return op;
 }
+
+WORD opcode = GetNextOpcode(); // suponha que isso retorne 0x1234
+// decodifica o opcode
+switch (opcode & 0xF000)
+{
+   case 0x1000: Opcode1NNN(opcode); quebrar ; // salta opcode
+   case 0x0000: // precisa quebrar ainda mais esse opcode
+   {
+     switch(opcode & 0x000F)
+     {
+       case 0x0000: 0pcode00E0(opcode) ; break // limpar tela opcode
+       case 0x000E: Opcode00EE(opcode) ; break // retorna subrotina
+     }
+   }
+   break ;
+   padrão: pausa; // opcode ainda a ser tratado
+}
+
+void Opcode1NNN (WORD opcode)
+{
+  Counter = opcode & 0x0FFF; // lembre-se que estamos interessados ​​apenas no NNN do opcode 1NNN
+}
