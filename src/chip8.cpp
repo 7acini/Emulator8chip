@@ -40,17 +40,17 @@ WORD opcode = GetNextOpcode(); // suponha que isso retorne 0x1234
 // decodifica o opcode
 switch (opcode & 0xF000)
 {
-   case 0x1000: Opcode1NNN(opcode); quebrar ; // salta opcode
+   case 0x1000: Opcode1NNN(opcode); break ; // salta opcode
    case 0x0000: // precisa quebrar ainda mais esse opcode
    {
      switch(opcode & 0x000F)
      {
-       case 0x0000: 0pcode00E0(opcode) ; break // limpar tela opcode
+       case 0x0000: Opcode00E0(opcode) ; break // limpar tela opcode
        case 0x000E: Opcode00EE(opcode) ; break // retorna subrotina
      }
    }
    break ;
-   padrão: pausa; // opcode ainda a ser tratado
+   default: break; // opcode ainda a ser tratado
 }
 
 void Opcode1NNN (WORD opcode)
