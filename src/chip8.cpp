@@ -4,8 +4,8 @@
 use namespace std;
 use namespace chip8;
 
-chip8* Instance = 0;
-chip8* CreateSingleton(){
+Chip8* Instance = 0;
+Chip8* Singleton(){
 	if (0 == Instance){
 		Instance == new chip8();
 		return Instance;
