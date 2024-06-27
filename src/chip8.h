@@ -21,33 +21,6 @@ BYTE DelayTimer ;
 BYTE SoundTimer ;
 };
 
-
-WORD GetNextOperationalCode(){
-  WORD op = 0;
-  op = GameMemory[Counter]; // no exemplo op é 0xAB
-  op <<= 8; // desloca 8 bits para esquerda, op é 0xAB00
-  op |= GameMemory[Counter + 1]; // op é 0xABCD
-  Counter += 2;
-  return op;
-}
-
-WORD opcode = GetNextOpcode(); // suponha que isso retorne 0x1234
-// decodifica o opcode
-switch (opcode & 0xF000)
-{
-   case 0x1000: Opcode1NNN(opcode); break ; // salta opcode
-   case 0x0000: // precisa quebrar ainda mais esse opcode
-   {
-     switch(opcode & 0x000F)
-     {
-       case 0x0000: Opcode00E0(opcode) ; break // limpar tela opcode
-       case 0x000E: Opcode00EE(opcode) ; break // retorna subrotina
-     }
-   }
-   break ;
-   default: break; // opcode ainda a ser tratado
-}
-
 void ClearScreen() ;
 
 void DecodeOpcode0(WORD opcode);
