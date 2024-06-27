@@ -10,13 +10,25 @@ const int ROMSIZE = 0xFFF;
 typedef unsigned char BYTE; //0 - 255
 typedef unsigned short int WORD; // 0 - 65535
 
+class {
+	public:
+		~Chip8();
+		static Chip8* Sigleton();
+		//O Singleton é um padrão de projeto criacional, que garante que apenas um objeto desse tipo exista e forneça um único ponto de acesso a ele para qualquer outro código.
+		void ExecuteNextOpcode();
+		void DecreaseTimers();
+		void KeyPressed(int key);
+		void NotKeyPressed(int key);
+
+}
+
 static Chip8CPU* Instance;
 BYTE GameMemory[ROMSIZE];	// 0xFFF bytes
 BYTE Registers[16];		// 16 Registradores, 1 byte
 WORD Counter;           	// Contador do Programa
 WORD FirstAddress;      	// Primeiro endereço de 16 bits
 vector<WORD> Stack;           	// Pilha de 16 bits
-BYTE KeyState[16] ;
+BYTE KeyState[16];
 BYTE DelayTimer ;
 BYTE SoundTimer ;
 };
