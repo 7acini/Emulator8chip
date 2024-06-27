@@ -22,19 +22,6 @@ BYTE SoundTimer ;
 };
 
 
-void CPUInicialize() {
-  FirstAddress = 0;
-  Counter = 0x200;
-  memset(Registers, 0, sizeof(Registers)); //Define os Registradores para 0
-}
-
-void LoadGame(char *game) {
-  FILE *fgame;
-  fgame = fopen(game, "rb");
-  fread(&GameMemory[0x200], ROMSIZE, 1, fgame);
-  fclose(fgame);
-}
-
 WORD GetNextOperationalCode(){
   WORD op = 0;
   op = GameMemory[Counter]; // no exemplo op é 0xAB
@@ -61,7 +48,6 @@ switch (opcode & 0xF000)
    default: break; // opcode ainda a ser tratado
 }
 
-void CPUReset();
 void ClearScreen() ;
 
 void DecodeOpcode0(WORD opcode);
