@@ -1,5 +1,5 @@
 #include "chip8.h"
-#include <assert.h>
+#include <cassert>
 
 use namespace std;
 use namespace chip8;
@@ -57,7 +57,7 @@ WORD GetNextOperationalCode(){
   return op;
 }
 
-WORD opcode = GetNextOpcode(); // suponha que isso retorne 0x1234
+WORD opcode = GetNextOperationalCode(); // suponha que isso retorne 0x1234
 // decodifica o opcode
 switch (opcode & 0xF000)
 {

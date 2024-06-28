@@ -24,7 +24,7 @@ class Singleton {
 		BYTE Screen[320][640][3];
 	private:
 		Chip8();
-		WORD GetNextOpcode();
+		WORD GetNextOperationalCode();
 		void PlayBeep();
 		int GetKeyPressed();
 
